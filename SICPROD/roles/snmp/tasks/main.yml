@@ -1,0 +1,5 @@
+---
+- name: SNMP & NETFLOW SETUP
+  template:
+       src: templates/snmp.j2
+       dest: "host_vars/{{ inventory_hostname }}/{{ dir_config }}/13-snmp.cfg"

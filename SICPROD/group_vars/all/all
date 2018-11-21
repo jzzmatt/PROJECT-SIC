@@ -1,0 +1,40 @@
+---
+
+platform: cisco_ios_ssh
+
+snmp_server:
+        ip:
+          - 10.1.10.7
+        port: 9996
+        local: "SIC-LDA"
+        contact: "administrator@sic.local"
+        pub: "sic_pub"
+        wr: "sic_wr"
+        flow: "NFAmonitor"
+        version: "version-9"
+
+
+loggin_server:
+         ip:
+           - 10.1.10.7
+         size: 10000
+
+
+dns_server:
+       ip:
+         - 10.1.10.1
+         - 10.1.50.1
+
+
+
+
+ntp:
+   server:
+       - "ao.pool.ntp.org"
+       - "0.africa.pool.ntp.org"
+       - "1.africa.pool.ntp.org"
+       - "2.africa.pool.ntp.org"
+       - "3.africa.pool.ntp.org"
+
+
+

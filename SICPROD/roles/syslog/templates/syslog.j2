@@ -1,0 +1,7 @@
+!
+{% for server in loggin_server.ip %}
+loggin host {{ server }}
+loggin buffered {{ loggin_server.size }}
+
+{% endfor %}
+

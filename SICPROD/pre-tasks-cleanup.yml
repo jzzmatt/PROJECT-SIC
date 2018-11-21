@@ -1,0 +1,16 @@
+---
+- name: CLEAN UP CONFIG FOLDER
+  file:
+    path: "{{ item }}" 
+    state: absent
+  with_items:
+       - "host_vars/{{ inventory_hostname }}/{{ dir_config }}"
+       - "host_vars/{{ inventory_hostname }}/{{ dir_diff }}"
+
+- name: RECREATE CONFIG FOLDER
+  file:
+    path: "{{ item }}" 
+    state: directory
+  with_items:
+       - "host_vars/{{ inventory_hostname }}/{{ dir_config }}"
+       - "host_vars/{{ inventory_hostname }}/{{ dir_diff }}"

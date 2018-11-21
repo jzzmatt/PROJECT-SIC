@@ -1,0 +1,16 @@
+---
+- name: LOAD VARIABLE
+  include_vars: 
+      dir : "host_vars/{{ inventory_hostname }}/{{ dir_facts }}"
+      name: loading_vars
+
+
+- name: SET VAR FACT
+  set_fact: loadfact={{ loading_vars }}
+
+- name: COPY FACT TO FILE
+  copy: content={{ loadfact }} dest="vars/{{ inventory_hostname }}_facts.yml"
+
+
+
+#- debug: var=getfact

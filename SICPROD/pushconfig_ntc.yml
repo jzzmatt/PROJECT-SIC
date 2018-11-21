@@ -1,0 +1,33 @@
+---
+- name: PUSH CONFIG TO HOST
+  connection: local
+  hosts: all
+  gather_facts: no
+
+  vars:
+    os: "cisco_ios_ssh"
+
+
+  tasks:
+     - stat: >
+         path="host_vars/{{ inventory_hostname }}/{{ dir_config }}/{{ inventory_hostname }}.cfg"
+       register: file_check
+
+
+     - name: PUSH CONFIG ASSEMBLE TO DEVICE
+       ntc_config_command:
+               connection: ssh
+               platform: "{{ os }}"
+               commands_file: "host_vars/{{ inventory_hostname }}/{{ dir_config }}/{{ inventory_hostname }}.cfg"
+               host: "{{ inventory_hostname }}"
+               username: "{{ ansible_user }}"
+               password: "{{ ansible_ssh_pass }}"
+       notify: save_config
+       when: file_check.stat.exists
+
+
+  handlers:
+       - name: save_config
+         ios_command:
+            commands: "write mem"
+ 

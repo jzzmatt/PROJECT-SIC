@@ -1,0 +1,6 @@
+!
+ip domain name {{ domain_name }}
+ip domain lookup
+{% for items in dns_server.ip %}
+ip name-server {{ items }}
+{% endfor %}

@@ -1,0 +1,32 @@
+---
+- name: GET IP ADDRESS
+  hosts: all
+  connection: local
+  gather_facts: no
+
+
+
+  tasks:
+
+   - ntc_show_command:
+           connection: ssh
+           platform: "{{ sys_os }}"
+           template_dir: "{{ ntc_template }}"
+           command: "sh ip int brief | exclude unass"
+           host: "{{ inventory_hostname }}"
+           username: "{{ ansible_user }}"
+           password: "{{ ansible_ssh_pass }}"
+
+     register: result
+
+   - name: Clean UP File if Exist
+     file:
+        path: "host_vars/{{ inventory_hostname }}/{{ dir_facts }}/list_interfaces"
+        state: absent
+
+
+   - copy:
+       content: "{{ result | to_yaml }}"
+       dest: "host_vars/{{ inventory_hostname }}/{{ dir_facts }}/list_interfaces"
+
+ #  - debug: var={{ result.response }}

@@ -1,0 +1,8 @@
+---
+- name: GET WAN  INTERFACE
+  set_fact: |
+      {% for intf in ansible_facts.interfaces %}
+      {% if intf == 'FastEthernet0.99' or intf == 'FastEthernet0/0.99' %}
+      wanintf: "{{ intf }}"
+      {% endif %}
+      {% endfor %}

@@ -1,0 +1,25 @@
+get_facts:
+    cisco_ios_ssh:
+        config_register: '0x2102'
+    fqdn: N/A
+    hostname: RT_WAN_SIC
+    interfaces:
+    - Embedded-Service-Engine0/0
+    - GigabitEthernet0/0
+    - GigabitEthernet0/0.20
+    - GigabitEthernet0/0.56
+    - GigabitEthernet0/0.99
+    - GigabitEthernet0/0.819
+    - GigabitEthernet0/1
+    - GigabitEthernet0/2
+    - NVI0
+    - Tunnel113
+    model: ''
+    os_version: 15.2(4)M4
+    serial_number: ''
+    uptime: 369000
+    uptime_string: 04:06:30:00
+    vendor: cisco
+    vlans: []
+changed: false
+failed: false

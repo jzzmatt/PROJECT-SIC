@@ -1,0 +1,13 @@
+---
+- name: LOAD VARIABLE
+  include_vars: 
+      dir : "/host_vars/{{ inventory_hostname }}/{{ dir_facts }}"
+      name: loading_vars
+
+
+- name: SET VAR FACT
+  set_fact: getfact={{ loading_vars }}
+
+
+
+#- debug: var=getfact

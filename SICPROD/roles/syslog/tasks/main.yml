@@ -1,0 +1,5 @@
+---
+- name: SETUP SYSLOG
+  template:
+      src: templates/syslog.j2
+      dest: "host_vars/{{ inventory_hostname }}/{{ dir_config }}/11-syslog.cfg"

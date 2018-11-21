@@ -1,0 +1,8 @@
+---
+- name: Assemble SETUP
+  assemble:
+     src: "host_vars/{{ inventory_hostname }}/{{ dir_config }}"
+     dest: "host_vars/{{ inventory_hostname }}/{{ dir_config }}/{{ inventory_hostname }}.cfg"
+
+
+

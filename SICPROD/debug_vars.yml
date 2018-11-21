@@ -1,0 +1,15 @@
+---
+- name: DBEUG VARS 
+  connection: local
+  hosts: all
+  gather_facts: no
+
+
+  tasks:
+     - debug: var=get_facts.interfaces
+    # - debug: var=hostvars[inventory_hostname].get_facts
+
+     #- include_vars:
+     #         file:  "host_vars/{{ inventory_hostname }}/{{ dir_facts }}/facts_output.yml"
+     #         name: stuff
+    # - debug: var=stuff.ansible_facts

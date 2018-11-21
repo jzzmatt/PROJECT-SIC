@@ -1,0 +1,39 @@
+[core]
+coreswsic
+
+[routers]
+wan-sic
+cacuaco-rt
+lcc-rt
+porto_lda-rt
+#sic_ingombota-rt
+uit-rt
+kinaxix-rt
+alvalade-rt
+minint-rt
+cpl-rt
+
+
+
+[switchs]
+cacuaco-sw
+lcc-sw
+porto_lda-sw
+#sic_ingombota-sw
+kinaxix-sw
+alvalade-sw
+minint-sw
+cpl-sw
+
+
+
+[all:vars]
+ansible_python_interpreter="/usr/bin/env python"
+ansible_user=admin
+ansible_ssh_pass="admin2018"
+sys_os = "cisco_ios"
+domain_name="sic.local"
+dir_config = CFG
+dir_diff = DIFF
+dir_facts = FACTS
+ntc_template = "/home/junior/SIC/ntc-ansible/ntc-templates/templates"

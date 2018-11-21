@@ -1,0 +1,45 @@
+---
+- name: PREPRATION BUILDING
+  hosts: all
+  connection: local
+  gather_facts: no
+  
+
+
+  tasks:
+    - name: Devices FOLDER
+      file:
+         dest: "./host_vars/{{ inventory_hostname }}"
+         state: directory
+      run_once: no
+
+
+
+    - name: CONFIGURATION  FOLDER
+      file:
+        dest: "./host_vars/{{ inventory_hostname }}/{{ dir_config }}"
+        state: directory
+      run_once: no
+
+
+    - name: DIFF FOLDER
+      file:
+        dest: "./host_vars/{{ inventory_hostname }}/{{ dir_diff }}"
+        state: directory
+      run_once: no
+
+    - name: FACTS FOLDER
+      file:
+        dest: "./host_vars/{{ inventory_hostname }}/{{ dir_facts }}"
+        state: directory
+
+
+
+
+    - name: GROUP FOLDER
+      file:
+        dest: "./group_vars/{{ item }}"
+        state: directory
+      with_items: "{{ groups }}"
+      run_once: true
+   

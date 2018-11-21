@@ -1,0 +1,29 @@
+---
+- name: PUSH CONFIG TO HOST
+  connection: local
+  hosts: all
+  gather_facts: no
+
+  vars:
+    provider_ios:
+         hostname: "{{ ansible_ssh_host|default(inventory_hostname) }}"
+         username: "{{ ansible_user }}"
+         password: "{{ ansible_ssh_pass }}"
+         dev_os: "ios"
+         
+
+
+  tasks:
+     - stat: >
+         path="host_vars/{{ inventory_hostname }}/{{ dir_config }}/{{ inventory_hostname }}.cfg"
+       register: file_check
+
+
+     - name: PUSH CONFIG TO DEVICE
+       napalm_install_config:
+               provider: "{{ provider_ios }}"
+               config_file: "host_vars/{{ inventory_hostname }}/{{ dir_config }}/{{ inventory_hostname }}.cfg"
+               commit_changes: True
+               replace_config: false
+               diff_file: "host_vars/{{ inventory_hostname }}/{{ dir_diff }}/{{ inventory_hostname }}_diff.txt"
+       when: file_check.stat.exists

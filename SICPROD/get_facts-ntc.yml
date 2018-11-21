@@ -1,0 +1,31 @@
+---
+- name: GET FACTS
+  hosts: all
+  gather_facts: no
+  connection: local
+
+
+  tasks:
+      - ntc_get_facts:
+             platform: "{{ platform }}"
+             host: "{{ inventory_hostname }}"
+             username: "{{ ansible_user }}"
+             password: "{{ ansible_ssh_pass }}"
+        register: result
+
+      - name: CHECK IF PREVIOUS FACT FILE
+        file: >
+             path=host_vars/{{ inventory_hostname }}/{{ dir_facts }}/facts_output.yml
+             state=absent
+
+      - copy:
+          content: "{{ result | to_nice_yaml }}"
+          dest: "host_vars/{{ inventory_hostname }}/{{ dir_facts }}/facts_output.yml"
+
+      - lineinfile:
+            path: "host_vars/{{ inventory_hostname }}/{{ dir_facts }}/facts_output.yml"
+            regexp: '^ansible_facts:'
+            line: 'get_facts:'
+
+#      - debug: var=result
+

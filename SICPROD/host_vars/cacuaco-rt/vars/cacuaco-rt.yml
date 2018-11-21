@@ -1,0 +1,30 @@
+---
+ansible_facts:
+    cisco_ios_ssh:
+        config_register: '0x2102'
+    fqdn: N/A
+    hostname: RT-WAN-CACUACO
+    interfaces:
+    - Async1
+    - FastEthernet0
+    - FastEthernet0.56
+    - FastEthernet0.99
+    - FastEthernet1
+    - FastEthernet2
+    - FastEthernet3
+    - FastEthernet4
+    - FastEthernet5
+    - FastEthernet6
+    - FastEthernet7
+    - FastEthernet8
+    - FastEthernet9
+    - Vlan1
+    model: '1811'
+    os_version: 15.1(3)T1
+    serial_number: ''
+    uptime: 47460
+    uptime_string: 00:13:11:00
+    vendor: cisco
+    vlans: []
+changed: false
+failed: false

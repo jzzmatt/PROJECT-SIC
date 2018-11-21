@@ -1,0 +1,37 @@
+{% set source_intf=[] %}
+{% set source_lst = ["FastEthernet0.56","FastEthernet0/0.56","GigabitEthernet0/0.56","Vlan99"] %}
+{% set export_name = 'NFAexporter' %}
+{% for item in source_lst %}
+{% if item in get_facts.interfaces %}
+{{ source_intf.append(item) }}
+{% endif %}
+{% endfor %}
+!
+interface {{ source_intf[0] }}
+ip flow monitor {{ snmp_server.flow }} input
+ip route-cache
+!
+{% if inventory_hostname in groups['routers']%}
+{% for item in snmp_server.ip %}
+flow exporter {{ export_name }}
+destination {{ item  }}
+export-protocol {{ snmp_server.version }}
+transport udp {{ snmp_server.port }}
+template data timeout 60
+!
+flow monitor {{ snmp_server.flow }}
+record netflow-original 
+cache timeout active 60
+cache timeout inactive 15
+{% endfor %}
+{% endif %}
+!
+snmp-server community {{ snmp_server.pub }} ro
+snmp-server community {{ snmp_server.wr }} rw
+{% for item in snmp_server.ip %}
+snmp-server host {{ item }} version 2c {{ snmp_server.pub }}
+{% endfor %}
+snmp-server enable traps
+snmp-server location {{ snmp_server.local }}
+snmp-server contact {{ snmp_server.contact }}
+

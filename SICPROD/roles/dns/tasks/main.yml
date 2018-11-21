@@ -1,0 +1,5 @@
+---
+- name: SETUP DNS SERVER
+  template:
+      src: templates/dns.j2
+      dest: "host_vars/{{ inventory_hostname }}/{{ dir_config }}/10-dns.cfg"

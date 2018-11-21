@@ -1,0 +1,1 @@
+ ansible-playbook pushconfig_napalm.yml -l coreswsic --check -vv

@@ -1,0 +1,120 @@
+---
+cacuaco-rt:
+    hosts: 172.27.1.17
+           
+cacuaco-sw:
+     hosts: 10.17.0.1
+        
+lcc-rt:
+    hosts: 172.27.1.11
+           
+lcc-sw:
+    hosts: 10.11.0.1  
+
+porto_lda-rt:
+    hosts: 172.27.1.13
+        
+porto_lda-sw:
+    hosts: 10.13.0.1  
+
+sic_ingombota-rt:
+    hosts: 172.27.1.14
+        
+sic_ingombota-sw:
+        hosts: 10.14.0.1
+           
+minint-rt:
+    hosts: 172.27.1.19
+    
+minint-sw:
+    hosts:  10.19.0.1
+
+kinaxix-rt:
+    hosts: 172.27.1.15
+    
+kinaxix-sw:
+    hosts: 10.15.0.1
+        
+uit-rt:
+    hosts: 172.27.1.6
+
+alvalade-rt:
+    hosts: 172.27.1.12
+        
+alvalade-sw:
+    hosts: 10.12.0.1 
+
+cpl-rt:
+    hosts: 172.27.1.18
+        
+cpl-sw:
+    hosts: 10.18.0.1 
+
+cacuaco:
+  children:
+       cacuaco-rt:
+       cacuaco-sw:
+                 
+lcc:
+  children:
+       lcc-rt:
+       lcc-sw:
+        
+porto_lda:
+  children:
+       porto_lda-rt:
+       porto_lda-sw:
+           
+sic_ingombota:
+  children:
+       sic_ingombota-rt:
+       sic_ingombota-sw:
+            
+uit:
+  children:
+          uit-rt:
+
+kinaxix:
+  children:
+         kinaxix-rt:
+         kinaxix-sw:
+
+alvalade:
+  children:
+       alvalade-rt:
+       alvalade-sw:
+         
+minint:
+  children:
+        minint-rt:
+        minint-sw:
+    
+cpl:
+  children:
+         cpl-rt:
+         cpl-sw:
+
+switchs:
+  children:
+    cacuaco-sw:
+    lcc-sw:
+    porto_lda-sw:
+    sic_ingombota-sw:
+    kinaxix-sw:
+    alvalade-sw:
+    minint-sw:
+    cpl-sw:
+
+
+routers:
+  children:
+    cacuaco-rt:
+    lcc-rt:
+    porto_lda-rt:
+    sic_ingombota-rt:
+    kinaxix-rt:
+    alvalade-rt:
+    minint-rt:
+    cpl-rt:
+    uit-rt:
+

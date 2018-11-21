@@ -1,0 +1,12 @@
+changed: false
+failed: false
+response:
+- {intf: Vlan10, ipaddr: 10.1.10.254, proto: up, status: up}
+- {intf: Vlan32, ipaddr: 10.1.32.1, proto: up, status: up}
+- {intf: Vlan98, ipaddr: 10.1.98.254, proto: up, status: up}
+- {intf: Vlan99, ipaddr: 10.1.99.254, proto: up, status: up}
+- {intf: Vlan106, ipaddr: 10.1.106.254, proto: up, status: up}
+- {intf: Vlan200, ipaddr: 10.1.12.254, proto: up, status: up}
+- {intf: Vlan250, ipaddr: 10.1.250.6, proto: up, status: up}
+- {intf: GigabitEthernet1/0/25, ipaddr: 172.16.12.1, proto: up, status: up}
+response_list: []

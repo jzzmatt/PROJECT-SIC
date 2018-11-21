@@ -1,0 +1,4 @@
+ip domain name sic.local
+crypto key generate rsa modulus 1024
+ip scp server enable
+do wr

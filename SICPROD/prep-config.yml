@@ -1,0 +1,25 @@
+---
+- name: PREP CONFIG & FOLDER CONFIGURATION
+  hosts: all
+  connection: local
+  gather_facts: no
+  
+
+  
+
+  pre_tasks:
+        - include_tasks: pre-tasks-cleanup.yml
+       # - import_tasks: load_vars.yml
+       # - debug: var="{{ getfact }}"
+  
+
+  roles:
+      - dns
+      - ntp
+      - syslog
+      - snmp
+
+
+
+  post_tasks:
+        - include_tasks: assembly.yml

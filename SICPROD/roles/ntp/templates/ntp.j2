@@ -1,0 +1,26 @@
+!
+clock timezone WAT 1 0
+{% if inventory_hostname in groups['core'] %}
+ntp master
+{% for key, item_lst in ntp.items() %}
+{% for server in item_lst %}
+{% if server == 'ao.pool.ntp.org' %}
+ntp server {{ server }} prefer
+{% else %}
+ntp server {{ server }}
+{% endif %}
+{% endfor %}
+{% endfor %}
+
+{% else %}
+{% for host in groups['core']%}
+{% for item in hostvars[host]['response'] %}
+{% if item.intf == "Vlan99" %}
+ntp server {{ item.ipaddr }}
+{% endif %}
+{% endfor %}
+
+{% endfor %}
+
+
+{% endif %}

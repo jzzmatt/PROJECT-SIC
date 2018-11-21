@@ -1,0 +1,26 @@
+get_facts:
+    cisco_ios_ssh:
+        config_register: '0x2102'
+    fqdn: N/A
+    hostname: RT-WAN-SIC.CPL
+    interfaces:
+    - FastEthernet0/0
+    - FastEthernet0/0.56
+    - FastEthernet0/0.57
+    - FastEthernet0/1
+    - FastEthernet0/0/0
+    - FastEthernet0/0/1
+    - FastEthernet0/0/2
+    - FastEthernet0/0/3
+    - Vlan1
+    - Vlan99
+    - NVI0
+    model: '1841'
+    os_version: 12.4(25f)
+    serial_number: ''
+    uptime: 171900
+    uptime_string: 01:23:45:00
+    vendor: cisco
+    vlans: []
+changed: false
+failed: false

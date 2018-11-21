@@ -1,0 +1,8 @@
+{% set intfwan =[] %}
+
+{% for item in get_facts.interfaces %}
+{% if item == "FastEthernet0.56" or item == "FastEthernet0/0.56" or item == "G0/0/56" %}
+{{ intfwan.append(item) }}
+{% endif %}
+{% endfor %}
+{{ intfwan[0]  }}
